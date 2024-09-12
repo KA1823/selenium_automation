@@ -9,6 +9,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import urllib.parse
+from selenium.common.exceptions import NoSuchElementException
 
 
 
@@ -17,18 +18,48 @@ class TripAdvisor():
     def __init__(self):
         self.main_tour_links = []
         self.data = {"Tour Name": [], "Contact number": [], "Contact email":[], "Website link": []}
+        index = 1
         driver = self.open_browser("https://www.tripadvisor.co.uk/Attractions-g189180-Activities-c42-Porto_Porto_District_Northern_Portugal.html")
-        self.get_main_tours_urls(driver)
-        self.get_specific_tour_details()
+        while True:
+            if index !=1:
+                if self.click_next(driver):
+                    self.get_main_tours_urls(driver)
+                    self.get_specific_tour_details()
+                else:
+                    break
+            else:
+                self.get_main_tours_urls(driver)
+                self.get_specific_tour_details()
+                index = 2
+
+
+    def click_next(driver):
+        try:
+            next_button = driver.find_element(By.XPATH, "//a[@class= 'BrOJk u j z _F wSSLS tIqAi unMkR' and @data-smoke-attr = 'pagination-next-arrow']")
+            next_button.click()
+            return True
+        except NoSuchElementException:
+            print("No more pages.")
+            return False
+
 
     def close_browser(self, driver):
         driver.quit()
 
+    
     def open_browser(self, link):
         options = webdriver.ChromeOptions()
         options.add_argument("start-maximized")
         options.add_experimental_option("excludeSwitches", ["enable-automation"])
         options.add_experimental_option('useAutomationExtension', False)
+        # options.add_argument('--disable-web-security')
+        # options.add_argument('--allow-running-insecure-content')
+
+        # options.add_argument("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36")
+
+        # options.add_argument(r"user-data-dir=/home/kamran/.config/google-chrome/Profile 15")
+        # options.add_argument("profile-directory=Default")
+
 
         # driver = webdriver.Chrome(options=options)
         driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
@@ -80,7 +111,7 @@ class TripAdvisor():
     def get_main_tours_urls(self, driver):
         time.sleep(10)
         main_tour_divs = driver.find_elements(By.XPATH, "//*[contains(@class, 'hZuqH y')]")
-        for main_tour_div in main_tour_divs[:15]:
+        for main_tour_div in main_tour_divs[:5]:
             url = main_tour_div.find_elements(By.TAG_NAME, 'a')[0].get_attribute("href")
             self.main_tour_links.append(url)
         self.close_browser(driver)
