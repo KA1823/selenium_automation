@@ -13,6 +13,11 @@ from selenium.common.exceptions import NoSuchElementException
 
 
 
+
+
+
+
+
 class TripAdvisor():
 
     def __init__(self):
@@ -48,10 +53,19 @@ class TripAdvisor():
 
     
     def open_browser(self, link):
+        
         options = webdriver.ChromeOptions()
         options.add_argument("start-maximized")
         options.add_experimental_option("excludeSwitches", ["enable-automation"])
         options.add_experimental_option('useAutomationExtension', False)
+        
+
+
+
+        
+
+
+        
         # options.add_argument('--disable-web-security')
         # options.add_argument('--allow-running-insecure-content')
 
@@ -63,6 +77,10 @@ class TripAdvisor():
 
         # driver = webdriver.Chrome(options=options)
         driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+
+        
+
+
 
 
         stealth(driver,
