@@ -64,7 +64,7 @@ class TripAdvisor():
 
         
 
-
+        
         
         # options.add_argument('--disable-web-security')
         # options.add_argument('--allow-running-insecure-content')
