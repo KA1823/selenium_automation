@@ -71,7 +71,7 @@ for key in login_response:
 
     if key == 'designation':
         title = login_response.get(key)
-        print("Employee Title:", title['title'])
+        print("Designation:", title['title'])
 
     if key == "is_active":
         employee_status = login_response.get(key)
