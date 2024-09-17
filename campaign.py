@@ -75,4 +75,5 @@ for key in court_data:
 
 
 
-a = ['https://www.tripadvisor.co.uk/AttractionProductReview-g189180-d11455798-Douro_Valley_..._Lunch_Cruise-Porto_Porto_District_No.html', 'https://www.tripadvisor.co.uk/AttractionProductReview-g189180-d16796856-Douro_Valley_...ise_Winery_Lunch-Porto_Porto_District.html', 'https://www.tripadvisor.co.uk/AttractionProductReview-g189180-d11472212-Authentic_Dou..._River_Cruise-Porto_Porto_District_No.html', 'https://www.tripadvisor.co.uk/AttractionProductReview-g189180-d13351949-Douro_Valley_...tional_Boat_Cruise-Porto_Porto_Distri.html', 'https://www.tripadvisor.co.uk/AttractionProductReview-g189180-d11485347-Douro_Valley_...ch_from_Porto-Porto_Porto_District_No.html', 'https://www.tripadvisor.co.uk/AttractionProductReview-g189180-d11475126-Douro_Valley_...unch_Tastings-Porto_Porto_District_No.html', 'https://www.tripadvisor.co.uk/AttractionProductReview-g189180-d11475603-Douro_Valley_...ng_Lunch_and_Boat-Porto_Porto_Distric.html', 'https://www.tripadvisor.co.uk/AttractionProductReview-g189180-d25419774-Premium_Smal...
+
+
