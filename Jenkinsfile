@@ -10,7 +10,7 @@ pipeline {
     stage('Clone Repository') {
       steps {
         echo 'Cloning Selenium Python test repo...'
-        git url: 'https://github.com/KA1823/selenium_automation.git'
+        git url: 'https://github.com/KA1823/selenium_automation.git', credentialsId: 'kam1823'
       }
     }
 
