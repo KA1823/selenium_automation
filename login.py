@@ -1,19 +1,43 @@
+# import json
+# import time
+# # from xml.etree.ElementTree import indent
+
+# from seleniumwire import webdriver  # Import webdriver from selenium-wire
+# from selenium.webdriver.chrome.options import Options
+# from selenium.webdriver.chrome.service import Service
+# from webdriver_manager.chrome import ChromeDriverManager
+# from selenium.webdriver.common.by import By
+# from selenium.webdriver.support.ui import WebDriverWait
+# from selenium.webdriver.support import expected_conditions as EC
+# from selenium.common.exceptions import NoSuchElementException, TimeoutException
+# # from time import sleep
+
+# options = Options()
+# driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 import json
 import time
-# from xml.etree.ElementTree import indent
+import tempfile
+import atexit
 
-from seleniumwire import webdriver  # Import webdriver from selenium-wire
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
+from seleniumwire import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import NoSuchElementException, TimeoutException
-# from time import sleep
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 
+# Setup Chrome options
 options = Options()
+options.add_argument('--headless')
+options.add_argument('--no-sandbox')
+options.add_argument('--disable-dev-shm-usage')
+
+user_data_dir = tempfile.mkdtemp()
+options.add_argument(f'--user-data-dir={user_data_dir}')
+
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+atexit.register(driver.quit)  # Ensures clean shutdown
 driver.maximize_window()
 
 driver.get ("https://www.oms.enigmatix.co/login")
