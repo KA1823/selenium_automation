@@ -71,13 +71,13 @@ while current_page <= MAX_PAGES:
 
             if attendance_status == PRESENT_URL:
                 print("Present")
-                present_absent_list.append("present")
+                present_absent_list.append("Present")
             elif attendance_status == ABSENT_URL:
                 print("Absent")
-                present_absent_list.append("absent")
+                present_absent_list.append("Absent")
 
             else:
-                present_absent_list.append("Holiday")
+                present_absent_list.append("Weekend/OFF")
 
         with open("output.csv", mode='a', newline='') as file:
             writer = csv.writer(file)
