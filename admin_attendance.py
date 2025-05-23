@@ -3,7 +3,7 @@ import json
 import time
 # from xml.etree.ElementTree import indent
 
-import pandas as pd 
+# import pandas as pd 
 from selenium import webdriver  # Import webdriver from selenium-wire
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
