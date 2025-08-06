@@ -21,10 +21,11 @@ driver.get ("https://www.oms.enigmatix.co/login")
 
 my_email = driver.find_element(By.CLASS_NAME, 'ant-input')
 my_email.send_keys("kamran.anwar86@gmail.com")
+# print("email", my_email.get_attribute("value"))
 
 login_password = driver.find_element(By.XPATH, "//input[@type='password' and @data-testid='password']")
 login_password.send_keys('Admin@123')
-
+# print("password", login_password.get_attribute("value"))
 btn_login = driver.find_element(By.XPATH, "//button[@title='LOGIN']")
 btn_login.click()
 
